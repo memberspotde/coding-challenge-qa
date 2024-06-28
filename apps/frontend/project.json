@@ -25,7 +25,8 @@
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/frontend/public"
+            "input": "apps/frontend/public",
+            "output": "apps/frontend/public"
           }
         ],
         "styles": [

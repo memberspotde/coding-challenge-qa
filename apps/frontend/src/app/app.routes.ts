@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 
-import { FrontendFeatureHomeComponent } from 'frontend/feature/home';
+import { HomeComponent } from 'frontend/feature/home';
 
 export const appRoutes: Route[] = [
   {
@@ -10,6 +10,6 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'home',
-    component: FrontendFeatureHomeComponent,
+    component: HomeComponent,
   },
 ];

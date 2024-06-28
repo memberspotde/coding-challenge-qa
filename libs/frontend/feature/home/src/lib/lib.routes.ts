@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
-import { FrontendFeatureHomeComponent } from './frontend-feature-home/frontend-feature-home.component';
+import { HomeComponent } from './home/home.component';
 
 export const frontendFeatureHomeRoutes: Route[] = [
-  { path: '', component: FrontendFeatureHomeComponent },
+  { path: '', component: HomeComponent },
 ];

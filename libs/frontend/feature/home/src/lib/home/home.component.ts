@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
   selector: 'lib-frontend-feature-home',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './frontend-feature-home.component.html',
-  styleUrl: './frontend-feature-home.component.css',
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css',
 })
-export class FrontendFeatureHomeComponent {}
+export class HomeComponent {}
