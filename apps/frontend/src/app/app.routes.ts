@@ -1,7 +1,5 @@
 import { Route } from '@angular/router';
 
-import { HomeComponent } from 'frontend/feature/home';
-
 export const appRoutes: Route[] = [
   {
     path: '',
@@ -10,6 +8,18 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'home',
-    component: HomeComponent,
+    loadComponent: () =>
+      import('frontend/feature/home').then((m) => m.HomeComponent),
+  },
+  {
+    path: 'thumbnail',
+    loadComponent: () =>
+      import('frontend/feature/thumbnail').then(
+        (m) => m.ThumbnailViewComponent
+      ),
+  },
+  {
+    path: '**',
+    redirectTo: '',
   },
 ];

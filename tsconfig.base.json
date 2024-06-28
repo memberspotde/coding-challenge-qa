@@ -10,10 +10,7 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
@@ -21,16 +18,12 @@
       "backend/feature/thumbnail": [
         "libs/backend/feature/thumbnail/src/index.ts"
       ],
-      "frontend/feature/home": [
-        "libs/frontend/feature/home/src/index.ts"
+      "frontend/feature/home": ["libs/frontend/feature/home/src/index.ts"],
+      "frontend/feature/thumbnail": [
+        "libs/frontend/feature/thumbnail/src/index.ts"
       ],
-      "shared/model": [
-        "libs/shared/model/src/index.ts"
-      ],
+      "shared/model": ["libs/shared/model/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }
