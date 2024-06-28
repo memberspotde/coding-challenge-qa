@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   host: {
-    class: 'w-full h-full flex flex-col bg-white',
+    class: 'w-full h-full flex flex-col bg-white overflow-y-hidden',
   },
 })
 export class AppComponent {
