@@ -4,6 +4,7 @@
   "sourceRoot": "libs/shared/model/src",
   "projectType": "library",
   "tags": [
+    "app:any",
     "scope:shared",
     "type:model"
   ],

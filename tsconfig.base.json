@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "backend/feature/thumbnail": [
+        "libs/backend/feature/thumbnail/src/index.ts"
+      ],
       "shared/model": ["libs/shared/model/src/index.ts"]
     }
   },
