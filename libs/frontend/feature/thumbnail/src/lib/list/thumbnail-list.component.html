@@ -1,0 +1,14 @@
+<div class="py-24 sm:py-32">
+  <div class="px-6 mx-auto max-w-7xl lg:px-8">
+    <ul
+      role="list"
+      class="grid max-w-2xl grid-cols-1 mx-auto mt-20 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+    >
+      @for(item of items; track item.id) {
+      <lib-thumbnail-list-item [item]="item"></lib-thumbnail-list-item>
+      }
+
+      <lib-thumbnail-list-add-item></lib-thumbnail-list-add-item>
+    </ul>
+  </div>
+</div>

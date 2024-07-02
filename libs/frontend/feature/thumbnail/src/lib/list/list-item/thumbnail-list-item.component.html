@@ -1,0 +1,89 @@
+<li>
+  <img
+    class="aspect-[3/2] w-full rounded-2xl object-cover"
+    [src]="item.url"
+    alt=""
+  />
+  <h3 class="mt-6 text-lg font-semibold leading-8 tracking-tight text-gray-900">
+    {{ item.name }}
+  </h3>
+  <p class="text-base leading-7 text-gray-600">
+    {{ item.description ?? '' }}
+  </p>
+  <ul role="list" class="flex mt-6 gap-x-6">
+    <li>
+      <a href="#" class="text-gray-400 hover:text-gray-500">
+        <span class="sr-only">Edit</span>
+        <svg
+          class="w-5 h-5"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          aria-hidden="true"
+        >
+          <g id="layer1" transform="translate(-421.714 -531.79)">
+            <path
+              style="fill: #373737; fill-opacity: 1; stroke: none"
+              d="M422.714 542.79v4h4l10-10-4-4zm2 0 8-8 2 2-8 8z"
+              id="rect4132"
+            />
+          </g>
+        </svg>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="text-gray-400 hover:text-gray-500">
+        <span class="sr-only">Delete</span>
+        <svg
+          class="w-5 h-5"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          aria-hidden="true"
+        >
+          <g
+            transform="matrix(.7 0 0 .7 .6 -6.7)"
+            style="display: inline"
+            id="layer4"
+          >
+            <path
+              id="rect833"
+              transform="translate(-.857 9.571) scale(1.42857)"
+              d="M3 6v8c0 .554.446 1 1 1h8c.554 0 1-.446 1-1V6z"
+              style="
+                opacity: 1;
+                fill: #373737;
+                fill-opacity: 1;
+                stroke: none;
+                stroke-width: 2.46936798;
+                stroke-linecap: square;
+                stroke-linejoin: round;
+                stroke-miterlimit: 4;
+                stroke-dasharray: none;
+                stroke-dashoffset: 3.20000005;
+                stroke-opacity: 0.55063291;
+              "
+            />
+
+            <path
+              id="rect840"
+              transform="translate(-.857 9.571) scale(1.42857)"
+              d="M5 1v2H2v2h12V3h-3V1zm1 1h4v1H6z"
+              style="
+                opacity: 1;
+                fill: #373737;
+                fill-opacity: 1;
+                stroke: none;
+                stroke-width: 2.79999995;
+                stroke-linecap: square;
+                stroke-linejoin: round;
+                stroke-miterlimit: 4;
+                stroke-dasharray: none;
+                stroke-dashoffset: 3.20000005;
+                stroke-opacity: 0.55063291;
+              "
+            />
+          </g>
+        </svg>
+      </a>
+    </li>
+  </ul>
+</li>
