@@ -4,7 +4,7 @@
       role="list"
       class="grid max-w-2xl grid-cols-1 mx-auto mt-20 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3"
     >
-      @for(item of items; track item.id) {
+      @for(item of items ?? []; track item.id) {
       <lib-thumbnail-list-item [item]="item"></lib-thumbnail-list-item>
       }
 

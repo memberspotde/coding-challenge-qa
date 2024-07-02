@@ -15,5 +15,5 @@ import { ThumbnailListAddItemComponent } from './list-add-item/thumbnail-list-ad
   templateUrl: './thumbnail-list.component.html',
 })
 export class ThumbnailListComponent {
-  @Input({ required: true }) items!: Thumbnail[];
+  @Input({ required: true }) items!: Thumbnail[] | null;
 }

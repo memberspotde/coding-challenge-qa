@@ -15,7 +15,7 @@ To run it, you need to have the following dependencies:
 1. Checkout the repository
 2. Go to the project folder and run `npm install`
 3. Start the frontend `nx serve frontend` will be hosted on `http://localhost:4200/`
-4. Start the backend `nx serve backend`will be hoster on `http://localhost:3000/api`
+4. Start the backend `nx serve backend`will be hosted on `http://localhost:3000/api`
 
 Optional:
 You can also start both with one command `nx run-many --target=serve --projects=frontend,backend --parallel=4`
