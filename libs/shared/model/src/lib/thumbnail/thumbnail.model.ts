@@ -1,5 +1,5 @@
 export interface Thumbnail {
-  id: string;
+  id: number;
   name: string;
   description?: string;
   url: string;
