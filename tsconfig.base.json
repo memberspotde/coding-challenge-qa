@@ -22,6 +22,7 @@
       "frontend/feature/thumbnail": [
         "libs/frontend/feature/thumbnail/src/index.ts"
       ],
+      "frontend/shared/common": ["libs/frontend/shared/common/src/index.ts"],
       "shared/model": ["libs/shared/model/src/index.ts"]
     }
   },

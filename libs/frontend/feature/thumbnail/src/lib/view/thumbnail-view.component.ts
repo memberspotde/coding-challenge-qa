@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { ThumbnailListComponent } from '../list/thumbnail-list.component';
 import { ThumbnailFrontendService } from '../service/thumbnail-frontend.service';
-import { tap } from 'rxjs';
 
 @Component({
   selector: 'lib-thumbnail-view',
