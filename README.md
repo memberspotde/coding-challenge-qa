@@ -9,6 +9,7 @@ To run it, you need to have the following dependencies:
 - node 18.19.1 || 20.11.1 || 22.0.0 [angular deps](https://angular.dev/reference/versions#actively-supported-versions)
 - nx 19.3.2
 - npm 10.2.4
+- sqlite3
 
 ## Installation
 
