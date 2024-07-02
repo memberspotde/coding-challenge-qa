@@ -1,1 +1,6 @@
-<lib-thumbnail-list [items]="items | async"></lib-thumbnail-list>
+<lib-thumbnail-list
+  [items]="items | async"
+  (add)="openCreateDialog()"
+  (edit)="openEditDialog($event)"
+  (remove)="removeThumbnail($event)"
+></lib-thumbnail-list>

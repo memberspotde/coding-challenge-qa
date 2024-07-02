@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'lib-thumbnail-list-add-item',
@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
   imports: [CommonModule],
   templateUrl: './thumbnail-list-add-item.component.html',
 })
-export class ThumbnailListAddItemComponent {}
+export class ThumbnailListAddItemComponent {
+  @Output() add = new EventEmitter<void>();
+}

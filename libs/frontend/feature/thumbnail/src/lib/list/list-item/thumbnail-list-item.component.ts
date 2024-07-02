@@ -1,5 +1,5 @@
 import { Thumbnail } from 'shared/model';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,4 +10,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ThumbnailListItemComponent {
   @Input({ required: true }) item!: Thumbnail;
+
+  @Output() edit = new EventEmitter<Thumbnail>();
+  @Output() remove = new EventEmitter<Thumbnail>();
 }
