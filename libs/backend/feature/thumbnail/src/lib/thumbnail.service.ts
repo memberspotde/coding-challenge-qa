@@ -22,9 +22,6 @@ export class ThumbnailService {
   async create(name: string, file: Express.Multer.File, description?: string) {
     const [fileName, fileWithPath] = await this.uploadFile(file);
 
-    console.log('savedFilePath', fileWithPath);
-    console.log('fileName', fileName);
-
     const thumbnail = this.thumbnailRepository.create({
       name,
       fileWithPath,
@@ -34,13 +31,11 @@ export class ThumbnailService {
 
     const dbItem = await this.thumbnailRepository.save(thumbnail);
 
-    console.log('dbItem', dbItem);
-
     return this.mapToThumbnailWithUrl(dbItem);
   }
 
-  get(id: number) {
-    return this.thumbnailRepository.findOneBy({ id });
+  async get(id: number) {
+    return await this.thumbnailRepository.findOneBy({ id });
   }
 
   async update(id: number, name: string, description?: string) {

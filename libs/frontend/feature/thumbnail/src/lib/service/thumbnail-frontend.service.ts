@@ -25,7 +25,7 @@ export class ThumbnailFrontendService {
 
   private loadThumbnails() {
     return this.http
-      .get<Thumbnail[]>(`${this.backendUrl}/api/thumbnails`)
+      .get<Thumbnail[]>(`${this.backendUrl}/thumbnails`)
       .pipe(tap((data) => this._subject.next(data)));
   }
 
@@ -40,7 +40,7 @@ export class ThumbnailFrontendService {
     }
 
     return this.http
-      .post<Thumbnail>(`${this.backendUrl}/api/thumbnails`, formData)
+      .post<Thumbnail>(`${this.backendUrl}/thumbnails`, formData)
       .pipe(
         tap((thumbnail) => {
           this._subject.next([...this._subject.value, thumbnail]);
@@ -50,7 +50,7 @@ export class ThumbnailFrontendService {
 
   edit(id: number, name: string, description?: string) {
     return this.http
-      .patch<Thumbnail>(`${this.backendUrl}/api/thumbnail/${id}`, {
+      .patch<Thumbnail>(`${this.backendUrl}/thumbnail/${id}`, {
         name,
         description,
       })
@@ -70,6 +70,6 @@ export class ThumbnailFrontendService {
       this._subject.value.filter((t) => t.id !== thumbnail.id)
     );
 
-    return this.http.delete(`${this.backendUrl}/api/thumbnail/${thumbnail.id}`);
+    return this.http.delete(`${this.backendUrl}/thumbnail/${thumbnail.id}`);
   }
 }

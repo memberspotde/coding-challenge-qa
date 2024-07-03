@@ -1,8 +1,5 @@
 import { Module } from '@nestjs/common';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-
 import {
   BackendFeatureThumbnailModule,
   Thumbnail,
@@ -12,15 +9,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
-    BackendFeatureThumbnailModule,
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'database.sqlite',
       entities: [Thumbnail],
       synchronize: true,
     }),
+    BackendFeatureThumbnailModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
