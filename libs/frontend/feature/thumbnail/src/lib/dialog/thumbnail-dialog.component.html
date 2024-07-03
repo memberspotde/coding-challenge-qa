@@ -1,25 +1,50 @@
-<div class="bg-white">
-  <h1 mat-dialog-title class="text-gray-600">Dialog</h1>
-  <div mat-dialog-content class="text-gray-600">
-    <p>What's your favorite framework?</p>
-    <p>
-      <strong>{{ data.name }}</strong>
-    </p>
-  </div>
-  <div mat-dialog-actions class="flex gap-4">
-    <button
-      type="button"
-      class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-    >
-      Save
-    </button>
-    <button
-      class="px-3 py-2 font-semibold rounded-md shadow-sm hover:bg-gray-200"
-      (click)="onNoClick()"
-    >
-      Cancel
-    </button>
-  </div>
+<div class="flex justify-between">
+  <h1 mat-dialog-title class="text-gray-600">Create Thumbnail</h1>
+  <button mat-icon-button class="p-4">
+    <mat-icon>close</mat-icon>
+  </button>
 </div>
+<div mat-dialog-content class="text-gray-600">
+  <form [formGroup]="thumbnailForm" class="flex flex-col">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input type="text" formControlName="name" placeholder="Name" matInput />
+      <mat-error>Name Missing</mat-error>
+    </mat-form-field>
 
-<!-- mt-6 text-lg leading-8 text-gray-600 -->
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea
+        formControlName="description"
+        placeholder="Description"
+        matInput
+      ></textarea>
+    </mat-form-field>
+
+    <mat-form-field (click)="f_input.click()">
+      <mat-label>Image File</mat-label>
+      <button mat-icon-button matPrefix (click)="f_input.click()">
+        <mat-icon>attach_file</mat-icon>
+      </button>
+      <input type="text" matInput readonly formControlName="file" />
+      <input type="file" hidden #f_input (change)="onFileSelected($event)" />
+      <mat-error>Image File is Required</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions class="flex justify-end gap-4 p-4">
+  <button
+    type="button"
+    [disabled]="thumbnailForm.invalid"
+    class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+    (click)="onSave()"
+  >
+    Save
+  </button>
+  <button
+    class="px-3 py-2 font-semibold rounded-md shadow-sm hover:bg-gray-200"
+    (click)="onNoClick()"
+  >
+    Cancel
+  </button>
+</div>

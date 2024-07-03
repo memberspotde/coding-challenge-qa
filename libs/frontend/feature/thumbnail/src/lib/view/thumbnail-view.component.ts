@@ -24,6 +24,7 @@ export class ThumbnailViewComponent {
       data: {
         thumbnail: null,
       },
+      width: '500px',
     });
   }
 
@@ -32,6 +33,7 @@ export class ThumbnailViewComponent {
       data: {
         thumbnail,
       },
+      width: '500px',
     });
   }
 
