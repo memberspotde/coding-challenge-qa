@@ -64,7 +64,7 @@ export class ThumbnailDialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (!this.data) {
+    if (!this.data.thumbnail) {
       return;
     }
 
