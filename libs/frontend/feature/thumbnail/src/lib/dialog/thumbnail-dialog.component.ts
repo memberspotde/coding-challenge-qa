@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -21,6 +21,7 @@ import {
 import { MatInput } from '@angular/material/input';
 import { MatIcon } from '@angular/material/icon';
 import { MatButton } from '@angular/material/button';
+import { Thumbnail } from 'shared/model';
 
 @Component({
   selector: 'lib-thumbnail-dialog',
@@ -40,19 +41,40 @@ import { MatButton } from '@angular/material/button';
     MatPrefix,
   ],
 })
-export class ThumbnailDialogComponent {
-  thumbnailForm = new FormGroup({
+export class ThumbnailDialogComponent implements OnInit {
+  form = new FormGroup({
+    id: new FormControl({ value: -1, disabled: true }),
     name: new FormControl('', [Validators.required]),
     description: new FormControl(''),
-    file: new FormControl({ value: '', disabled: false }, [
+    fileName: new FormControl({ value: '', disabled: false }, [
       Validators.required,
     ]),
+    file: new FormControl<File | null>(null, {
+      validators: [Validators.required],
+    }),
   });
+
+  get isNew() {
+    return !this.data?.thumbnail?.id;
+  }
 
   constructor(
     public dialogRef: MatDialogRef<ThumbnailDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { name: string }
+    @Inject(MAT_DIALOG_DATA) public data: { thumbnail: Thumbnail }
   ) {}
+
+  ngOnInit(): void {
+    if (!this.data) {
+      return;
+    }
+
+    this.form.patchValue({
+      id: this.data.thumbnail.id,
+      name: this.data.thumbnail.name,
+      description: this.data.thumbnail.description,
+      fileName: this.data.thumbnail.url,
+    });
+  }
 
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -64,7 +86,15 @@ export class ThumbnailDialogComponent {
     }
 
     if (input.files && input.files.length > 0) {
-      this.thumbnailForm.get('file')?.patchValue(fileName);
+      this.form.get('fileName')?.patchValue(fileName);
+
+      const file = input.files[0];
+
+      if (!file) {
+        return;
+      }
+
+      this.form.get('file')?.patchValue(file);
     }
   }
 
@@ -73,10 +103,9 @@ export class ThumbnailDialogComponent {
   }
 
   onSave(): void {
-    if (this.thumbnailForm.valid) {
+    if (this.form.valid) {
       // Handle the save action
-      console.log(this.thumbnailForm.value);
-      this.dialogRef.close(this.thumbnailForm.value);
+      this.dialogRef.close(this.form.value);
     }
   }
 }

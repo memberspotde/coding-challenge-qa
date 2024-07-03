@@ -1,8 +1,7 @@
-import { Thumbnail as ThumbnailModel } from 'shared/model';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Thumbnail implements ThumbnailModel {
+export class Thumbnail {
   @PrimaryGeneratedColumn()
   id!: number;
 
@@ -13,5 +12,8 @@ export class Thumbnail implements ThumbnailModel {
   description?: string;
 
   @Column()
-  url!: string;
+  fileWithPath!: string;
+
+  @Column()
+  fileName!: string;
 }

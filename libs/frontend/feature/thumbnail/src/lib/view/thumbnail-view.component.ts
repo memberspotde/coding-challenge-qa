@@ -5,6 +5,8 @@ import { ThumbnailFrontendService } from '../service/thumbnail-frontend.service'
 import { MatDialog } from '@angular/material/dialog';
 import { ThumbnailDialogComponent } from '../dialog/thumbnail-dialog.component';
 import { Thumbnail } from 'shared/model';
+import { ThumbnailDialogCloseEvent } from '../dialog/thumbnail-dialog.model';
+import { of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'lib-thumbnail-view',
@@ -17,27 +19,73 @@ export class ThumbnailViewComponent {
   private thumbnailService = inject(ThumbnailFrontendService);
   public dialog = inject(MatDialog);
 
-  items = this.thumbnailService.getThumbnails();
+  items = this.thumbnailService.data;
 
   openCreateDialog() {
-    this.dialog.open(ThumbnailDialogComponent, {
+    const dialogRef = this.dialog.open(ThumbnailDialogComponent, {
       data: {
         thumbnail: null,
       },
       width: '500px',
     });
+
+    dialogRef
+      .afterClosed()
+      .pipe(
+        switchMap((result: ThumbnailDialogCloseEvent) => {
+          if (!result) {
+            return of(null);
+          }
+
+          return this.thumbnailService.create(
+            result.name,
+            result.file,
+            result.description
+          );
+        })
+      )
+      .subscribe({
+        error: (error) => {
+          console.error('Error', error);
+        },
+      });
   }
 
   openEditDialog(thumbnail: Thumbnail) {
-    this.dialog.open(ThumbnailDialogComponent, {
+    const dialogRef = this.dialog.open(ThumbnailDialogComponent, {
       data: {
         thumbnail,
       },
       width: '500px',
     });
+
+    dialogRef
+      .afterClosed()
+      .pipe(
+        switchMap((result: ThumbnailDialogCloseEvent) => {
+          if (!result) {
+            return of(null);
+          }
+
+          return this.thumbnailService.edit(
+            thumbnail.id,
+            result.name,
+            result.description
+          );
+        })
+      )
+      .subscribe({
+        error: (error) => {
+          console.error('Error', error);
+        },
+      });
   }
 
   removeThumbnail(thumbnail: Thumbnail) {
-    console.log('removeThumbnail', thumbnail);
+    this.thumbnailService.remove(thumbnail).subscribe({
+      error: (error) => {
+        console.error('Error', error);
+      },
+    });
   }
 }

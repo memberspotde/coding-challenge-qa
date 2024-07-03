@@ -12,7 +12,10 @@
   </p>
   <ul role="list" class="flex mt-6 gap-x-6">
     <li>
-      <a href="#" class="text-gray-400 hover:text-gray-500">
+      <a
+        (click)="edit.emit(item)"
+        class="text-gray-400 cursor-pointer hover:text-gray-500"
+      >
         <span class="sr-only">Edit</span>
         <svg
           class="w-5 h-5"
@@ -31,7 +34,10 @@
       </a>
     </li>
     <li>
-      <a href="#" class="text-gray-400 hover:text-gray-500">
+      <a
+        (click)="remove.emit(item)"
+        class="text-gray-400 cursor-pointer hover:text-gray-500"
+      >
         <span class="sr-only">Delete</span>
         <svg
           class="w-5 h-5"

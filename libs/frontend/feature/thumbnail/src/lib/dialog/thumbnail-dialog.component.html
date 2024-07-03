@@ -5,7 +5,7 @@
   </button>
 </div>
 <div mat-dialog-content class="text-gray-600">
-  <form [formGroup]="thumbnailForm" class="flex flex-col">
+  <form [formGroup]="form" class="flex flex-col">
     <mat-form-field>
       <mat-label>Name</mat-label>
       <input type="text" formControlName="name" placeholder="Name" matInput />
@@ -21,30 +21,38 @@
       ></textarea>
     </mat-form-field>
 
+    @if (isNew) {
     <mat-form-field (click)="f_input.click()">
       <mat-label>Image File</mat-label>
       <button mat-icon-button matPrefix (click)="f_input.click()">
         <mat-icon>attach_file</mat-icon>
       </button>
-      <input type="text" matInput readonly formControlName="file" />
+      <input type="text" matInput readonly formControlName="fileName" />
       <input type="file" hidden #f_input (change)="onFileSelected($event)" />
       <mat-error>Image File is Required</mat-error>
     </mat-form-field>
+    } @else {
+    <input
+      #fileName
+      type="text"
+      matInput
+      readonly
+      formControlName="fileName"
+      hidden
+    />
+    <a
+      [href]="fileName.value"
+      target="_blank"
+      class="overflow-hidden text-blue-500"
+    >
+      {{ fileName.value }}
+    </a>
+    }
   </form>
 </div>
 <div mat-dialog-actions class="flex justify-end gap-4 p-4">
-  <button
-    type="button"
-    [disabled]="thumbnailForm.invalid"
-    class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-    (click)="onSave()"
-  >
+  <button mat-button [disabled]="form.invalid" type="button" (click)="onSave()">
     Save
   </button>
-  <button
-    class="px-3 py-2 font-semibold rounded-md shadow-sm hover:bg-gray-200"
-    (click)="onNoClick()"
-  >
-    Cancel
-  </button>
+  <button mat-button (click)="onNoClick()">Cancel</button>
 </div>

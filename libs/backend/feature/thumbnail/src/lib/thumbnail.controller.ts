@@ -1,7 +1,19 @@
-import { Body, Controller, Delete, Get, Patch, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Patch,
+  Post,
+  UploadedFile,
+  UseInterceptors,
+} from '@nestjs/common';
 
 import { CreateThumbnailDto, UpdateThumbnailDto } from 'shared/model';
 import { ThumbnailService } from './thumbnail.service';
+import { Express } from 'express';
+import 'multer';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('thumbnails')
 export class ThumbnailController {
@@ -18,10 +30,14 @@ export class ThumbnailController {
   }
 
   @Post()
-  create(@Body() thumbnail: CreateThumbnailDto) {
+  @UseInterceptors(FileInterceptor('file'))
+  create(
+    @UploadedFile() file: Express.Multer.File,
+    @Body() thumbnail: CreateThumbnailDto
+  ) {
     return this.thumbnailService.create(
       thumbnail.name,
-      thumbnail.url,
+      file,
       thumbnail.description
     );
   }
@@ -31,7 +47,6 @@ export class ThumbnailController {
     return this.thumbnailService.update(
       thumbnail.id,
       thumbnail.name,
-      thumbnail.url,
       thumbnail.description
     );
   }
